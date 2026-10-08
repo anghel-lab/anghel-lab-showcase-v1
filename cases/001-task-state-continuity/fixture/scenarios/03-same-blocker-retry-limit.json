@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "same_blocker_retry_limit",
+  "initial": {
+    "status": "blocked",
+    "blockerId": "synthetic-blocker-a",
+    "attemptCount": 0,
+    "retryLimit": 3
+  },
+  "events": [
+    {"type": "same_blocker_failure", "blockerId": "synthetic-blocker-a"},
+    {"type": "same_blocker_failure", "blockerId": "synthetic-blocker-a"},
+    {"type": "same_blocker_failure", "blockerId": "synthetic-blocker-a"}
+  ],
+  "expectedAfterEachEvent": [
+    {
+      "status": "retry_pending",
+      "blockerId": "synthetic-blocker-a",
+      "attemptCount": 1,
+      "retryLimit": 3
+    },
+    {
+      "status": "retry_pending",
+      "blockerId": "synthetic-blocker-a",
+      "attemptCount": 2,
+      "retryLimit": 3
+    },
+    {
+      "status": "blocked_after_retry_limit",
+      "blockerId": "synthetic-blocker-a",
+      "attemptCount": 3,
+      "retryLimit": 3
+    }
+  ],
+  "expected": {
+    "status": "blocked_after_retry_limit",
+    "blockerId": "synthetic-blocker-a",
+    "attemptCount": 3,
+    "retryLimit": 3
+  }
+}
