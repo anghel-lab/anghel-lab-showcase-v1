@@ -1,0 +1,153 @@
+{
+  "id": "normal_recovery_startup_share_preconditions",
+  "routes": [
+    "normal",
+    "recovery",
+    "startup"
+  ],
+  "cases": [
+    {
+      "name": "schema_incompatible",
+      "state": {
+        "schemaCompatible": false,
+        "authorityEligible": true,
+        "humanGateEligible": true
+      }
+    },
+    {
+      "name": "authority_ineligible",
+      "state": {
+        "schemaCompatible": true,
+        "authorityEligible": false,
+        "humanGateEligible": true
+      }
+    },
+    {
+      "name": "human_gate_ineligible",
+      "state": {
+        "schemaCompatible": true,
+        "authorityEligible": true,
+        "humanGateEligible": false
+      }
+    }
+  ],
+  "expected": {
+    "cases": {
+      "schema_incompatible": {
+        "routes": {
+          "normal": {
+            "allowed": false,
+            "decision": "deny_schema_incompatible",
+            "interpreted": false,
+            "trace": [
+              "entry:normal",
+              "check:schema_compatible",
+              "deny:schema_incompatible"
+            ]
+          },
+          "recovery": {
+            "allowed": false,
+            "decision": "deny_schema_incompatible",
+            "interpreted": false,
+            "trace": [
+              "entry:recovery",
+              "check:schema_compatible",
+              "deny:schema_incompatible"
+            ]
+          },
+          "startup": {
+            "allowed": false,
+            "decision": "deny_schema_incompatible",
+            "interpreted": false,
+            "trace": [
+              "entry:startup",
+              "check:schema_compatible",
+              "deny:schema_incompatible"
+            ]
+          }
+        },
+        "allBlockedBeforeInterpretation": true
+      },
+      "authority_ineligible": {
+        "routes": {
+          "normal": {
+            "allowed": false,
+            "decision": "deny_authority_ineligible",
+            "interpreted": false,
+            "trace": [
+              "entry:normal",
+              "check:schema_compatible",
+              "check:authority_eligible",
+              "deny:authority_ineligible"
+            ]
+          },
+          "recovery": {
+            "allowed": false,
+            "decision": "deny_authority_ineligible",
+            "interpreted": false,
+            "trace": [
+              "entry:recovery",
+              "check:schema_compatible",
+              "check:authority_eligible",
+              "deny:authority_ineligible"
+            ]
+          },
+          "startup": {
+            "allowed": false,
+            "decision": "deny_authority_ineligible",
+            "interpreted": false,
+            "trace": [
+              "entry:startup",
+              "check:schema_compatible",
+              "check:authority_eligible",
+              "deny:authority_ineligible"
+            ]
+          }
+        },
+        "allBlockedBeforeInterpretation": true
+      },
+      "human_gate_ineligible": {
+        "routes": {
+          "normal": {
+            "allowed": false,
+            "decision": "deny_human_gate_ineligible",
+            "interpreted": false,
+            "trace": [
+              "entry:normal",
+              "check:schema_compatible",
+              "check:authority_eligible",
+              "check:human_gate_eligible",
+              "deny:human_gate_ineligible"
+            ]
+          },
+          "recovery": {
+            "allowed": false,
+            "decision": "deny_human_gate_ineligible",
+            "interpreted": false,
+            "trace": [
+              "entry:recovery",
+              "check:schema_compatible",
+              "check:authority_eligible",
+              "check:human_gate_eligible",
+              "deny:human_gate_ineligible"
+            ]
+          },
+          "startup": {
+            "allowed": false,
+            "decision": "deny_human_gate_ineligible",
+            "interpreted": false,
+            "trace": [
+              "entry:startup",
+              "check:schema_compatible",
+              "check:authority_eligible",
+              "check:human_gate_eligible",
+              "deny:human_gate_ineligible"
+            ]
+          }
+        },
+        "allBlockedBeforeInterpretation": true
+      }
+    },
+    "allCasesBlockedBeforeInterpretation": true
+  }
+}
