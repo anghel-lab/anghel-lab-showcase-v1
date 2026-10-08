@@ -1,0 +1,35 @@
+{
+  "id": "component_tests_pass_integration_fails",
+  "route": "normal",
+  "isolatedComponentTests": {
+    "compatibilityGuard": "pass",
+    "authorityGuard": "pass"
+  },
+  "state": {
+    "schemaCompatible": false,
+    "authorityEligible": true
+  },
+  "expected": {
+    "isolatedComponentTestsPass": true,
+    "legacyIntegration": {
+      "allowed": true,
+      "decision": "resume",
+      "interpreted": true,
+      "trace": [
+        "legacy:component_local_tests_pass",
+        "legacy:interpret:resume_without_shared_preconditions"
+      ]
+    },
+    "guardedIntegration": {
+      "allowed": false,
+      "decision": "deny_schema_incompatible",
+      "interpreted": false,
+      "trace": [
+        "entry:normal",
+        "check:schema_compatible",
+        "deny:schema_incompatible"
+      ]
+    },
+    "gapDetected": true
+  }
+}
