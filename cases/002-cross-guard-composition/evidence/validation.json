@@ -30,17 +30,61 @@
     "unsupportedRouteProbesPassed": 1
   },
   "negativeMutationProbes": [
-    {"id": "shared_precondition_skip", "expected": "fail", "observed": "fail"},
-    {"id": "human_gate_skip", "expected": "fail", "observed": "fail"},
-    {"id": "startup_route_bypass", "expected": "fail", "observed": "fail"},
-    {"id": "cleanup_conflates_yield", "expected": "fail", "observed": "fail"},
-    {"id": "schema_bypass_normal", "expected": "fail", "observed": "fail"},
-    {"id": "schema_bypass_recovery", "expected": "fail", "observed": "fail"},
-    {"id": "schema_bypass_startup", "expected": "fail", "observed": "fail"},
-    {"id": "authority_bypass_normal", "expected": "fail", "observed": "fail"},
-    {"id": "authority_bypass_recovery", "expected": "fail", "observed": "fail"},
-    {"id": "authority_bypass_startup", "expected": "fail", "observed": "fail"},
-    {"id": "unsupported_route_guard_skip", "expected": "fail", "observed": "fail"}
+    {
+      "id": "shared_precondition_skip",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "human_gate_skip",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "startup_route_bypass",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "cleanup_conflates_yield",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "schema_bypass_normal",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "schema_bypass_recovery",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "schema_bypass_startup",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "authority_bypass_normal",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "authority_bypass_recovery",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "authority_bypass_startup",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "unsupported_route_guard_skip",
+      "expected": "fail",
+      "observed": "fail"
+    }
   ],
   "limitations": [
     "This evidence records the synthetic public integration fixture result only.",
