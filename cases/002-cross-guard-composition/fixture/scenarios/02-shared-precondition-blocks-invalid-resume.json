@@ -1,0 +1,23 @@
+{
+  "id": "shared_precondition_blocks_invalid_resume",
+  "route": "recovery",
+  "state": {
+    "schemaCompatible": true,
+    "authorityEligible": false
+  },
+  "expected": {
+    "route": "recovery",
+    "result": {
+      "allowed": false,
+      "decision": "deny_authority_ineligible",
+      "interpreted": false,
+      "trace": [
+        "entry:recovery",
+        "check:schema_compatible",
+        "check:authority_eligible",
+        "deny:authority_ineligible"
+      ]
+    },
+    "blockedBeforeInterpretation": true
+  }
+}
