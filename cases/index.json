@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "0.1.0",
+  "cases": [
+    {
+      "id": "case-001-task-state-continuity",
+      "path": "cases/001-task-state-continuity/case.json",
+      "status": "public_reproduction"
+    },
+    {
+      "id": "case-002-cross-guard-composition",
+      "path": "cases/002-cross-guard-composition/case.json",
+      "status": "public_reproduction"
+    }
+  ]
+}
