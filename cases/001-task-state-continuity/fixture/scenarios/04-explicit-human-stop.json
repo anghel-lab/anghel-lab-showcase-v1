@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "explicit_human_stop",
+  "initial": {
+    "status": "waiting_external",
+    "continuationAllowed": false,
+    "decision": "pending"
+  },
+  "events": [
+    {"type": "evaluate_continuation", "autoResumeReady": true, "humanStop": true}
+  ],
+  "expected": {
+    "status": "stopped_by_human",
+    "continuationAllowed": false,
+    "decision": "human_stop_precedence"
+  }
+}
