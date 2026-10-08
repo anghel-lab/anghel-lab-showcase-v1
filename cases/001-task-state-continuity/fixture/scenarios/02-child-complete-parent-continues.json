@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "child_complete_parent_continues",
+  "initial": {
+    "parentStatus": "waiting_child",
+    "parentReevaluated": false
+  },
+  "events": [
+    {"type": "child_completed", "childStatus": "completed"}
+  ],
+  "expected": {
+    "parentStatus": "running",
+    "parentReevaluated": true
+  }
+}

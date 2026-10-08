@@ -1,0 +1,26 @@
+{
+  "id": "yield_allowed_cleanup_denied",
+  "route": "normal",
+  "state": {
+    "schemaCompatible": true,
+    "authorityEligible": true,
+    "humanGateEligible": true,
+    "yieldEligible": true,
+    "cleanupEligible": false
+  },
+  "expected": {
+    "yieldAllowed": true,
+    "cleanupAllowed": false,
+    "decision": "deny_cleanup_ineligible",
+    "trace": [
+      "entry:normal",
+      "check:schema_compatible",
+      "check:authority_eligible",
+      "check:human_gate_eligible",
+      "check:yield_eligible",
+      "yield:allowed",
+      "check:cleanup_eligible",
+      "deny:cleanup_ineligible"
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "case-001-task-state-continuity",
+  "title": "Long-running task continuity without conversation-memory dependence",
+  "claimRefs": ["long-running-execution-continuity"],
+  "origin": {
+    "class": "derived_private_source",
+    "sourceDisclosure": "opaque_private",
+    "privateSourceId": "internal-case-a"
+  },
+  "failurePattern": [
+    "A non-human external wait can be mistaken for task completion.",
+    "A child task can complete while its parent task is silently forgotten.",
+    "Retry count and resume position can disappear when they exist only in conversational context.",
+    "A Human stop or approval boundary can be confused with an automatic continuation condition."
+  ],
+  "designResponse": [
+    "Persist machine-readable execution state separately from process definition.",
+    "Represent return conditions explicitly rather than infer completion from conversational flow.",
+    "Re-evaluate the parent after child completion.",
+    "Persist blocker identity and retry count.",
+    "Give explicit Human interrupt / gate state higher priority than automatic continuation."
+  ],
+  "publicFixture": {
+    "class": "synthetic_fixture",
+    "status": "executable",
+    "scenarioRefs": [
+      "cases/001-task-state-continuity/fixture/scenarios/01-external-wait-then-resume.json",
+      "cases/001-task-state-continuity/fixture/scenarios/02-child-complete-parent-continues.json",
+      "cases/001-task-state-continuity/fixture/scenarios/03-same-blocker-retry-limit.json",
+      "cases/001-task-state-continuity/fixture/scenarios/04-explicit-human-stop.json"
+    ],
+    "artifactRefs": [
+      "cases/001-task-state-continuity/fixture/runner.py",
+      "cases/001-task-state-continuity/fixture/scenarios/01-external-wait-then-resume.json",
+      "cases/001-task-state-continuity/fixture/scenarios/02-child-complete-parent-continues.json",
+      "cases/001-task-state-continuity/fixture/scenarios/03-same-blocker-retry-limit.json",
+      "cases/001-task-state-continuity/fixture/scenarios/04-explicit-human-stop.json"
+    ],
+    "entryArtifactRef": "cases/001-task-state-continuity/fixture/runner.py",
+    "productionCodeCopied": false
+  },
+  "validation": {
+    "level": "public_reproduction",
+    "status": "pass",
+    "evidenceRefs": [
+      "cases/001-task-state-continuity/evidence/validation.json"
+    ],
+    "reproductionInvocation": {
+      "profile": "python_script",
+      "runner": "python",
+      "entryArtifactRef": "cases/001-task-state-continuity/fixture/runner.py",
+      "args": []
+    }
+  },
+  "limitations": [
+    "This case does not publish the production Task State schema, storage mapping, recovery implementation, or authority routing.",
+    "Passing the public fixture proves the synthetic state-transition contract only, not byte-for-byte identity with private production code or independent authentication of field operation."
+  ]
+}

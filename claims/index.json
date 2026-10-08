@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "0.1.0",
+  "claims": [
+    {
+      "id": "long-running-execution-continuity",
+      "statement": "Designs execution state and return conditions so long-running AI work can continue across external waits, retries, child completion, and Human Gates without relying only on conversation memory.",
+      "proofLevel": "field_validated",
+      "caseRefs": ["case-001-task-state-continuity"],
+      "limitations": [
+        "The public case is an abstraction and does not disclose the production Task State schema or live routing.",
+        "Field-validation provenance is retained privately; public validation applies to the public fixture itself."
+      ]
+    },
+    {
+      "id": "guard-composition-integrity",
+      "statement": "Detects and corrects safety or state-management gaps that appear when individually valid guards are composed into a larger execution path.",
+      "proofLevel": "field_validated",
+      "caseRefs": ["case-002-cross-guard-composition"],
+      "limitations": [
+        "The public case models the integration failure pattern without exposing the production guard set.",
+        "Specific private repository routing and authority details are intentionally omitted."
+      ]
+    }
+  ]
+}

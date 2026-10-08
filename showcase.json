@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "packageId": "anghel-lab-showcase-v1",
+  "canonical": false,
+  "status": "public_distribution_v1",
+  "purpose": "machine_readable_capability_showcase",
+  "primaryAudience": ["ai", "human"],
+  "entrypoints": {
+    "evidenceContract": "contracts/evidence-contract.json",
+    "claims": "claims/index.json",
+    "cases": "cases/index.json",
+    "validator": "validation/validate_showcase.py",
+    "regressionTests": "validation/test_validate_showcase.py"
+  },
+  "semantics": {
+    "productionSourceOfTruth": "external_private_system",
+    "productionReimport": "prohibited",
+    "privateSourceExport": "curated_abstraction_only",
+    "publicFixtureMeaning": "proves_fixture_behavior_not_private_code_identity"
+  },
+  "defaultExclusions": [
+    "secrets_credentials_accounts",
+    "private_personal_or_project_context",
+    "raw_runtime_state",
+    "raw_private_telemetry",
+    "current_production_control_plane_internals",
+    "unnecessary_live_authority_or_recovery_routing",
+    "unreleased_research_without_explicit_approval"
+  ],
+  "releaseBoundary": {
+    "visibilityChangeRequiresHumanGate": true,
+    "publicReleaseRequiresHumanGate": true,
+    "fullRepositorySurfaceAuditRequired": true,
+    "surfaces": [
+      "default_branch",
+      "all_branches",
+      "commit_history",
+      "issues",
+      "pull_requests",
+      "actions_and_artifacts",
+      "tags",
+      "releases",
+      "attachments_and_other_discoverable_resources"
+    ]
+  },
+  "activityRecord": {
+    "enabled": false,
+    "owner": "external_anghel_lab_telemetry",
+    "candidateUses": ["research-note", "ai-review"],
+    "rawTelemetryStoredHere": false
+  }
+}

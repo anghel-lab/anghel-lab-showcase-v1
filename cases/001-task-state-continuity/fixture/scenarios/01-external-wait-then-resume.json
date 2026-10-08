@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "external_wait_then_resume",
+  "initial": {
+    "status": "waiting_external",
+    "resumeCondition": "not_ready",
+    "completed": false
+  },
+  "events": [
+    {"type": "external_check", "ready": false},
+    {"type": "external_check", "ready": true}
+  ],
+  "expectedAfterEachEvent": [
+    {
+      "status": "waiting_external",
+      "resumeCondition": "not_ready",
+      "completed": false
+    },
+    {
+      "status": "ready",
+      "resumeCondition": "external_ready",
+      "completed": false
+    }
+  ],
+  "expected": {
+    "status": "ready",
+    "resumeCondition": "external_ready",
+    "completed": false
+  }
+}

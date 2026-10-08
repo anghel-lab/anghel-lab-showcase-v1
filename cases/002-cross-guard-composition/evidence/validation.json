@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "0.1.0",
+  "caseId": "case-002-cross-guard-composition",
+  "validationLevel": "public_reproduction",
+  "result": "pass",
+  "artifactRefs": [
+    "cases/002-cross-guard-composition/fixture/runner.py",
+    "cases/002-cross-guard-composition/fixture/scenarios/01-component-tests-pass-integration-fails.json",
+    "cases/002-cross-guard-composition/fixture/scenarios/02-shared-precondition-blocks-invalid-resume.json",
+    "cases/002-cross-guard-composition/fixture/scenarios/03-yield-allowed-cleanup-denied.json",
+    "cases/002-cross-guard-composition/fixture/scenarios/04-normal-recovery-startup-share-preconditions.json"
+  ],
+  "reproductionInvocation": {
+    "profile": "python_script",
+    "runner": "python",
+    "entryArtifactRef": "cases/002-cross-guard-composition/fixture/runner.py",
+    "args": []
+  },
+  "observed": {
+    "exitCode": 0,
+    "scenarioCount": 4,
+    "passed": 4,
+    "traceEventCount": 53,
+    "routeMatrixCases": 3,
+    "routePredicateAssertions": 9,
+    "routeSpecificMutationProbeCount": 6,
+    "routeSpecificMutationProbesPassed": 6,
+    "summary": "Showcase Case 002 fixture: PASS (4/4, trace events=53, route-specific mutation probes=6/6, unsupported-route probes=1/1)",
+    "unsupportedRouteProbeCount": 1,
+    "unsupportedRouteProbesPassed": 1
+  },
+  "negativeMutationProbes": [
+    {
+      "id": "shared_precondition_skip",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "human_gate_skip",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "startup_route_bypass",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "cleanup_conflates_yield",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "schema_bypass_normal",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "schema_bypass_recovery",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "schema_bypass_startup",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "authority_bypass_normal",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "authority_bypass_recovery",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "authority_bypass_startup",
+      "expected": "fail",
+      "observed": "fail"
+    },
+    {
+      "id": "unsupported_route_guard_skip",
+      "expected": "fail",
+      "observed": "fail"
+    }
+  ],
+  "limitations": [
+    "This evidence records the synthetic public integration fixture result only.",
+    "It does not authenticate or disclose the private production guard inventory, recovery/startup routing, authority implementation, or operational history."
+  ],
+  "failClosedProbes": [
+    {
+      "id": "unsupported_route",
+      "expected": "deny_unsupported_route",
+      "observed": "deny_unsupported_route"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "0.1.0",
+  "caseId": "case-001-task-state-continuity",
+  "validationLevel": "public_reproduction",
+  "result": "pass",
+  "artifactRefs": [
+    "cases/001-task-state-continuity/fixture/runner.py",
+    "cases/001-task-state-continuity/fixture/scenarios/01-external-wait-then-resume.json",
+    "cases/001-task-state-continuity/fixture/scenarios/02-child-complete-parent-continues.json",
+    "cases/001-task-state-continuity/fixture/scenarios/03-same-blocker-retry-limit.json",
+    "cases/001-task-state-continuity/fixture/scenarios/04-explicit-human-stop.json"
+  ],
+  "reproductionInvocation": {
+    "profile": "python_script",
+    "runner": "python",
+    "entryArtifactRef": "cases/001-task-state-continuity/fixture/runner.py",
+    "args": []
+  },
+  "observed": {
+    "exitCode": 0,
+    "scenarioCount": 4,
+    "passed": 4,
+    "temporalCheckpointCount": 5,
+    "summary": "Showcase Case 001 fixture: PASS (4/4, temporal checkpoints=5)"
+  },
+  "limitations": [
+    "This evidence records the synthetic public fixture result only.",
+    "It does not authenticate or disclose the private production implementation or operational history."
+  ]
+}

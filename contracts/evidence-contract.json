@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "0.1.0",
+  "contractId": "anghel-showcase-evidence-contract",
+  "requiredEntrypointPaths": {
+    "evidenceContract": "contracts/evidence-contract.json",
+    "claims": "claims/index.json",
+    "cases": "cases/index.json",
+    "validator": "validation/validate_showcase.py",
+    "regressionTests": "validation/test_validate_showcase.py"
+  },
+  "entrypointShapes": {
+    "evidenceContract": ["schemaVersion", "contractId", "requiredEntrypointPaths"],
+    "claims": ["schemaVersion", "claims"],
+    "cases": ["schemaVersion", "cases"]
+  },
+  "proofLevels": {
+    "research": {
+      "meaning": "A hypothesis, design direction, or research question exists. Implementation or field operation is not claimed."
+    },
+    "implemented": {
+      "meaning": "An implementation exists and has implementation-level evidence. Field operation is not implied unless separately stated."
+    },
+    "field_validated": {
+      "meaning": "The capability or design has evidence from actual operation or applied use. Public artifacts may still be abstracted fixtures rather than production copies."
+    }
+  },
+  "validationLevels": {
+    "none": "No public validation is available yet.",
+    "structural": "Machine-readable references and required evidence fields are internally consistent.",
+    "deterministic_fixture": "A public-safe executable fixture is validated deterministically against repository-contained evidence.",
+    "public_reproduction": "A third party can execute the declared public entry artifact through the structured invocation profile and reproduce a recorded passing result from this repository alone."
+  },
+  "fixtureStatuses": [
+    "planned",
+    "executable"
+  ],
+  "validationMaturityRequirements": {
+    "none": {
+      "allowedFixtureStatuses": ["planned", "executable"],
+      "requiredFixtureFields": [],
+      "requiredValidationFields": [],
+      "requireExistingArtifactRefs": false,
+      "requirePassingEvidenceRefs": false,
+      "requireStructuredInvocation": false
+    },
+    "structural": {
+      "allowedFixtureStatuses": ["planned", "executable"],
+      "requiredFixtureFields": [],
+      "requiredValidationFields": [],
+      "requireExistingArtifactRefs": false,
+      "requirePassingEvidenceRefs": false,
+      "requireStructuredInvocation": false
+    },
+    "deterministic_fixture": {
+      "allowedFixtureStatuses": ["executable"],
+      "requiredFixtureFields": ["artifactRefs"],
+      "requiredValidationFields": ["evidenceRefs"],
+      "requireExistingArtifactRefs": true,
+      "requirePassingEvidenceRefs": true,
+      "requireStructuredInvocation": false
+    },
+    "public_reproduction": {
+      "allowedFixtureStatuses": ["executable"],
+      "requiredFixtureFields": ["artifactRefs", "entryArtifactRef"],
+      "requiredValidationFields": ["evidenceRefs", "reproductionInvocation"],
+      "requireExistingArtifactRefs": true,
+      "requirePassingEvidenceRefs": true,
+      "requireStructuredInvocation": true
+    }
+  },
+  "reproductionInvocationContract": {
+    "requiredFields": ["profile", "runner", "entryArtifactRef", "args"],
+    "profiles": {
+      "python_script": {
+        "allowedRunners": ["python", "python3"],
+        "entryArtifactArgIndex": 1,
+        "argsAfterEntryArtifact": true
+      }
+    }
+  },
+  "validationEvidenceContract": {
+    "format": "json",
+    "requiredFields": [
+      "schemaVersion",
+      "caseId",
+      "validationLevel",
+      "result",
+      "artifactRefs"
+    ],
+    "passingResult": "pass",
+    "publicReproductionRequiredFields": ["reproductionInvocation"],
+    "artifactRefsMustMatchFixture": true,
+    "reproductionInvocationMustMatchValidation": true
+  },
+  "provenanceClasses": {
+    "public_source": "The supporting source is intentionally public.",
+    "derived_private_source": "The public artifact is derived from private operational evidence; the private source is not disclosed.",
+    "synthetic_fixture": "The artifact is purpose-built to reproduce a design property without copying production data or implementation."
+  },
+  "requiredClaimFields": [
+    "id",
+    "statement",
+    "proofLevel",
+    "caseRefs",
+    "limitations"
+  ],
+  "requiredCaseFields": [
+    "id",
+    "title",
+    "claimRefs",
+    "origin",
+    "failurePattern",
+    "designResponse",
+    "publicFixture",
+    "validation",
+    "limitations"
+  ],
+  "rules": [
+    "manifest_entrypoints_must_match_contract_role_paths_and_shapes",
+    "all_machine_readable_repository_refs_must_resolve_to_files_within_repository_root",
+    "claim_case_graph_must_be_connected_bidirectionally",
+    "proof_level_must_not_exceed_available_evidence",
+    "validation_level_must_not_exceed_fixture_and_evidence_maturity",
+    "passing_validation_evidence_must_correspond_to_the_same_case_level_and_artifacts",
+    "public_reproduction_must_use_a_structured_vetted_invocation_profile",
+    "structured_invocation_entry_artifact_must_equal_the_fixture_entry_artifact",
+    "validation_evidence_must_repeat_the_same_structured_invocation",
+    "public_fixture_pass_does_not_prove_private_code_identity",
+    "derived_private_source_must_not_require_private_source_disclosure",
+    "limitations_must_be_explicit_and_non_empty",
+    "production_semantics_must_not_be_imported_from_showcase"
+  ]
+}
