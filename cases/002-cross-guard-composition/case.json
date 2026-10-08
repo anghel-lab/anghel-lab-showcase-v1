@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "case-002-cross-guard-composition",
+  "title": "Integration gaps between individually valid guards",
+  "claimRefs": ["guard-composition-integrity"],
+  "origin": {
+    "class": "derived_private_source",
+    "sourceDisclosure": "opaque_private",
+    "privateSourceId": "internal-case-b"
+  },
+  "failurePattern": [
+    "Two or more guards can pass their isolated tests while an integration path skips a shared precondition.",
+    "A recovery or startup path can interpret state before applying compatibility or authority checks.",
+    "A state that is safe to pause or yield is not necessarily safe to clean up or delete."
+  ],
+  "designResponse": [
+    "Move shared preconditions to a common integration entry before state interpretation.",
+    "Apply Human Gate / authority eligibility consistently across normal, recovery, and startup paths.",
+    "Separate semantic yield eligibility from destructive cleanup eligibility.",
+    "Add permanent cross-component regression fixtures rather than relying only on component-local tests."
+  ],
+  "publicFixture": {
+    "class": "synthetic_fixture",
+    "status": "executable",
+    "scenarioRefs": [
+      "cases/002-cross-guard-composition/fixture/scenarios/01-component-tests-pass-integration-fails.json",
+      "cases/002-cross-guard-composition/fixture/scenarios/02-shared-precondition-blocks-invalid-resume.json",
+      "cases/002-cross-guard-composition/fixture/scenarios/03-yield-allowed-cleanup-denied.json",
+      "cases/002-cross-guard-composition/fixture/scenarios/04-normal-recovery-startup-share-preconditions.json"
+    ],
+    "artifactRefs": [
+      "cases/002-cross-guard-composition/fixture/runner.py",
+      "cases/002-cross-guard-composition/fixture/scenarios/01-component-tests-pass-integration-fails.json",
+      "cases/002-cross-guard-composition/fixture/scenarios/02-shared-precondition-blocks-invalid-resume.json",
+      "cases/002-cross-guard-composition/fixture/scenarios/03-yield-allowed-cleanup-denied.json",
+      "cases/002-cross-guard-composition/fixture/scenarios/04-normal-recovery-startup-share-preconditions.json"
+    ],
+    "entryArtifactRef": "cases/002-cross-guard-composition/fixture/runner.py",
+    "productionCodeCopied": false
+  },
+  "validation": {
+    "level": "public_reproduction",
+    "status": "pass",
+    "evidenceRefs": [
+      "cases/002-cross-guard-composition/evidence/validation.json"
+    ],
+    "reproductionInvocation": {
+      "profile": "python_script",
+      "runner": "python",
+      "entryArtifactRef": "cases/002-cross-guard-composition/fixture/runner.py",
+      "args": []
+    }
+  },
+  "limitations": [
+    "The public model does not disclose the private production guard inventory or current recovery / startup routing.",
+    "Passing the public fixture proves the synthetic guard-composition contract only, not byte-for-byte identity with private production code, independent authentication of field operation, or disclosure of live authority internals."
+  ]
+}
